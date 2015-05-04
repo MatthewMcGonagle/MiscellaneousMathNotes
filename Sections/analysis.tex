@@ -1,5 +1,48 @@
 Here we record some general notes on analysis.
 
+\subsection{Regularity of Eigenvalues and Eigenvectors}
+
+Consider a symmetric matrix function $M(x): \mathbb R^m \to \mathbb R^n\times \mathbb R^n$. At each point $x\in \mathbb R^m$, we have that the eigenvalues $\lambda_i$ of $M(x)$ are real valued. Therefore, we may uniquely indentify them using an ordering $\lambda_1 \leq ... \leq \lambda_m$. In general, if $M$ is smooth (or even analytic) each $\lambda_i$ may be only Lipschitz.
+
+The Lipschitz nature of each $\lambda_i$ may be demonstrated by identifying each $\lambda_i$ with an inf-sup variational problem. In particular we have that
+\begin{equation}
+\lambda_i = \inf\limits_{\dim V = i} \sup\limits_{v\in V, \, \|v\| = 1} \langle v, Mv\rangle,
+\end{equation}
+where $V$ is an $i$-dimensional sub-space of $\mathbb R^n$.
+
+Although the eigenvlaues are at least Lipschitz, there is no guarantee of the regularity of the eigenvectors, not even continuity. Problems occur when eigenvalues have multiplicty greater than one.
+
+Consider the matrix function
+\begin{equation}
+M(t) = \begin{pmatrix}
+a(t) & b(t)\\
+b(t) & c(t)
+\end{pmatrix}.
+\end{equation}
+We see that the eigenfunctions are solutions to $\lambda^2 - (a + c)\lambda + ac-b^2 = 0$. Therefore,
+\begin{align}
+\lambda_i & = \frac{a+c \pm \sqrt{(a+c)^2 - 4(ac - b^2)}}{2},\\
+& = \frac{a+c \pm \sqrt{(a-c)^2 + 4 b^2}}{2}
+\end{align}
+
+We see that $\lambda_i$ are continuous and their derivatives don't exist only when $(a-c)^2 + 4b^2 = 0.$ For the case of $M(t)$ smooth, when this occurs we actually have that $(a-c)^2 + 4b^2 = \mathcal O((t-t_0)^2).$ So, we see that $\lambda_i$ will be Lipschitz.
+
+\begin{example}
+Consider the explicit example
+
+\begin{equation}
+M(t) = \begin{pmatrix}
+1 + t & t\\
+t & 1-t
+\end{pmatrix}.
+\end{equation}
+
+Then, we have that
+\begin{equation}
+\lambda_i = 1 \pm \sqrt{2}|t|.
+\end{equation}
+\end{example}
+
 \subsection{The Inverse Function Theorem}
 
 We will prove a weaker version of the inverse function theorem using differential equations. Consider $f: U \to V$. Let us consider the construction of the inverse of $f$ along a curve $\gamma(t) \in V$ with $\gamma(0) = 0$. We wish to construct a curve $\chi(t)$ with $\chi(0) = 0$ and $f\circ \chi (t) = \gamma(t)$. Differentiating, we see that $\chi(t)$ must necessarily satisfy $Df(\chi(t))\chi'(t) = \gamma'(t)$. Therefore, 
