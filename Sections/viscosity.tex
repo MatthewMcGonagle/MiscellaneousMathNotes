@@ -1,0 +1,117 @@
+Here we record some notes on the discussion of viscosity solutions discussed in the User's Guide \cite{usersguide}. We adopt the notation of the User's Guide \cite{usersguide}.
+
+As a reminder, we seek solutions to an elliptic fully non-linear equation
+\begin{equation}
+F(x,u, Du, D^2 u) = 0, x\in \Omega.
+\end{equation}
+
+An upper semi-continuous function $u(x)$ is a \textbf{viscosity sub-solution} if for any $x\in\Omega$ and $(p,X)\in J^+u(x)$ we have that
+\begin{equation}
+F(x,u, p, X) \leq 0.
+\end{equation}
+
+Similarly, a lower semi-continuous function $u(x)$ is a \textbf{viscosity super-solution} if for any $x\in\Omega$ and $(p,X)\in J^-u(x)$ we have that
+\begin{equation}
+F(x,u,p,X) \geq 0.
+\end{equation}
+
+A \textbf{viscosity solution} $u$ is both a viscosity sub-solution and viscosity super-solution.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Motivation}
+
+Here we consider an example motivating the need to consider weak viscosity solutions to partial differential equations.
+
+\begin{example}
+
+For $0<\epsilon<0$ consider the elliptic operators $L_\epsilon : C^2(\mathbb R) \to C(\mathbb R)$ defined by
+\begin{equation}
+L_\epsilon u = -u'' + \frac{\epsilon}{\left(\epsilon + x^2\right)^2} u.
+\end{equation}
+Considering the User's Guide's \cite{usersguide} discussion of Hamilton-Jacobi-Bellman equations, we seek to solve the problem
+\begin{equation}\label{eq:viscosity5}
+\begin{cases}
+\sup\limits_{0<\epsilon<1}L_\epsilon u = 0 & x\in (-1,1),\\
+u(-1) = u(1) = 1.
+\end{cases}
+\end{equation}
+
+Now, note that the solution to each Dirichlet problem
+\begin{equation}
+\begin{cases}
+L_\epsilon u_\epsilon = 0 & x\in(-1,1),\\
+u_\epsilon(-1) = u_\epsilon(1) = 1,
+\end{cases}
+\end{equation}
+is the smooth function $u_\epsilon(x) = (\epsilon+1)^{-1/2}\sqrt{\epsilon + x^2}.$
+
+Now, let us argue by contradiction that there is no $C^2$ solution to the Dirichlet problem $\eqref{eq:viscosity5}$. So assume that $u\in C^2(-1,1)$ is a solution to $\eqref{eq:viscosity5}$. First, note that at $x=0$, we have that $L_\epsilon u(0) = -u''(0) + \frac{1}{\epsilon} u(0).$ Therefore, we must have that $u(0)\leq 0$ and
+\begin{equation} \label{eq:viscosity7}
+-u''(0) + u(0) = 0. 
+\end{equation}
+
+Now, consider if $x\neq 0$ and $u\leq0$. Then $\sup\limits_{0<\epsilon<0} L_\epsilon u(x) = -u''$. Therefore $u''(x) =0$. Now, if $u(0)<0$, then from the continuity of $u''$ and equation \eqref{eq:viscosity7}, we have that $u(0) = 0$ and $u''(0) = 0$. So, for and $x$ such that $u\leq 0$, we have that $u''(0)=0$. Therefore, since the boundary values are positive, we must have that $u\geq 0$ on all of $(-1,1)$.
+
+Now consider the case that $u(x)>0$. The maximum of $\frac{\epsilon}{(\epsilon+x^2)}$ is at $\epsilon = x^2\in(0,1)$. Therefore, 
+\begin{equation}\label{eq:viscosity8}
+-u''(x) + \frac{1}{4x^2}u = 0.
+\end{equation}
+The general solution to this Euler type equation is readily seen to be $u(x) = c_1 |x|^{(1+\sqrt{2})/2} + c_2 |x|^{(1-\sqrt{2})/2},$ for $x\neq 0$.
+
+Now, let $y = \max \{x\in(-1,1): u(x) = 0\}$; we know that $y\geq 0$ and $u'(y) = 0$. Now, if $y>0$, then we know that \eqref{eq:viscosity8} has a unique solution to the initival value problem $u(y) = u'(y) = 0$ on the interval $(y,1)$. However, this solution is clearly $u = 0$, but this is impossible for the given boundary conditions. Therefore, we see that $u>0$ on $(0,1)$. Similarly, $u>0$ on $(-1,0)$. So $x=0$ is the only zero of $u$.
+
+Now we know that on $(0,1)$, $u(x)$ is of the form $u(x) = c_1 x^{(1+\sqrt{2})/2} + c_2 x^{(1-\sqrt{2})/2}$. However, we have that $u(0) = 0$. Therefore the continuity of $u$ gives us that $c_2 = 0$. The boundary condition $u(1) = 1$ then gives us that $c_1 = 1$. Similar analysis on $(-1,0)$ then gives us that $u(x) = |x|^{(1+\sqrt{2})/2}$. However, this solution is not $C^2$.
+
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The ``Closures'' of the semi-jets, $\barJp u$ and $\barJm u$}
+
+Here we give some worked examples showing that the ``closure'' of the semi-jets $\barJp u$ and $\barJm u$ are not given by projections of the closures of the graphs of the semi-jets, e.g. the graph $\{(x,\semiJp u(x))\}$ and the graph $\{(x,u(x),\semiJp u(x))\}$.
+
+First, a simple example to illustrate the case of continuous functions.
+
+\begin{example}
+Consider the function $u: \mathbb R \to \mathbb R$ defined by $u(x) = |x|$. Note that $\semiJp u: \mathcal R\to \mathcal{P} \mathbb R^2$. We see that
+\begin{equation}
+\semiJp u(x) = \begin{cases}
+\{-1\}\times[0,\infty) & x<0,\\
+\emptyset & x=0,\\
+\{1\}\times[0,\infty) & x>0.
+\end{cases}
+\end{equation}
+
+We have that
+\begin{equation}
+\barJp u(x) = \begin{cases}
+\{-1\}\times[0,\infty) & x<0,\\
+\{-1,1\}\times [0,\infty) & x=0,\\
+\{1\}\times[0,\infty) & x>0.
+\end{cases}
+\end{equation}
+\end{example}
+
+Now, let us consider the subtle details of the definition of $\barJp u$ for upper semi-continuous $u(x)$.
+
+\begin{example}
+Let $u: \mathbb R\to \mathbb R$ be defined by 
+\begin{equation}
+u(x) = \begin{cases}
+-x & x<0,\\
+1+x & x\geq 0.
+\end{cases}
+\end{equation}
+
+We have that 
+\begin{equation}
+\semiJp u (x) = \begin{cases}
+\{-1\}\times [0,\infty) & x<0,\\
+\Big( (1,\infty)\times \mathbb R\Big)\cup \Big(\{1\}\times [0,\infty)\Big) & x=0,\\
+\{1\}\times[0,\infty)& x>0.
+\end{cases}
+\end{equation}
+
+We then have that $\barJp u(x) = \semiJp u(x)$. Note that $\barJp u(0)$ doesn't include $\{-1\}\times[0,\infty)$, because $\limsup\limits_{x\to 0-} u(x) < u(0).$
+\end{example}

@@ -1,0 +1,64 @@
+Here we record some general notes on analysis.
+
+\subsection{The Inverse Function Theorem}
+
+We will prove a weaker version of the inverse function theorem using differential equations. Consider $f: U \to V$. Let us consider the construction of the inverse of $f$ along a curve $\gamma(t) \in V$ with $\gamma(0) = 0$. We wish to construct a curve $\chi(t)$ with $\chi(0) = 0$ and $f\circ \chi (t) = \gamma(t)$. Differentiating, we see that $\chi(t)$ must necessarily satisfy $Df(\chi(t))\chi'(t) = \gamma'(t)$. Therefore, 
+\begin{equation}\label{eq:analysis_1}
+\chi'(t) = Df^{-1}(\chi(t)) \gamma'(t).
+\end{equation}
+
+By choosing a family of curves $\gamma(t)$ exhausting a neighborhood of $y=0$, we may construct $f^{-1}$ from \eqref{eq:analysis_1}.
+
+\begin{proposition}
+Let $U, V \subset \mathbb R^n$ be open, and let $0\in U, V$. Let $f: U \to V$ be such that $f\in C^1(U)$, $f(0) = 0$, $Df$ is invertible at every point of $U$, $Df^{-1}$ is Lipschitz on $U$.
+
+Then there exists neighborhoods $0\in U' \subset U$ and $0\in V' \subset V$ such that $f$ is a bijection of $U'$ and $V'$. Furthermore, $f^{-1}$ is continuous on $V'$.
+\end{proposition}
+
+\begin{proof}
+Consider the family of curves $\gamma_y(t) = ty$. Then $\gamma'(t) = y$. So, from \eqref{eq:analysis_1}, we seek to solve
+\begin{equation}
+\chi_y'(t) = Df^{-1}(\chi_y(t)) y.
+\end{equation}
+
+We reformulate this as a fixed point problem for an integral equation. For any function $\psi(y,t)$ we define the operator $T \psi(y,t) $ by
+\begin{equation}
+T \psi(y,t) = \int\limits_0^t Df^{-1}(\psi(y,s)) y \ds.
+\end{equation}
+
+Then, we seek to find $\chi(y,t)$ such that $T\chi(y,t) = \chi(y,t)$. Let $L$ be the Lipschitz constant of $Df^{-1}$ so that $|Df^{-1}(x_1) - Df^{-1}(x_2)| \leq L |x_1 - x_2|$. Then we see that
+\begin{align}
+|T\psi(y,t) - T\phi(y,t)| & \leq \int_0^t L|\psi(y,s) - \phi(y,s)| |y| \ds,\\
+& \leq L  \| \psi - \phi\|_{C^0} |ty|.
+\end{align}
+
+So, for some neighborhood $V' \subset V$, letting $W = V'\times(-2, 2)$, we get that $T$ takes a convex neighborhood $N$ in $C^0(W)$ of $\psi(y,t) = 0$ to itself. Furthermore, 
+\begin{equation}
+\|T\psi - T\phi\|_{C^0(W)} \leq \frac{1}{2} \|\psi - \phi\|_{C^0(W)}.
+\end{equation}
+Therefore, by the contraction mapping principle there is a unique $\chi(y,t) \in N$ such that $T\chi = \chi$. Define $g(y) = \chi(y,1)$. So, by the definition of $\chi(y,t)$, we have that $f\circ g(y) = y$. Therefore, $g: V' \to U$ is injective.
+
+Now, from the differentiability of $f$, we have that $f(x) = f(0) + Df(0)x + \mathcal O(\|x\|^2)$. Since $Df(0)$ is non-singular, we have $\|Df(0)x\| \geq \|Df^{-1}(0)\| \|x\|$. Hence, for some neighborhood $0\in U'\subset U$, we have that $f$ is injective on $U'$. Furthermore, we may take $U'$ such that $f: U' \to V'$. Hence, $f$ and $g$ give continuous bijections between $U'$ and $V'$.
+\end{proof}
+
+Now we extend the regularity.
+
+\begin{proposition}
+If $f: U \to V$ is a continuous homeomorphism, $f\in C^1(U)$, and $Df$ non-singular in $U$. Then, $f^{-1}\in C^1(V)$.
+\end{proposition}
+
+\begin{proof}
+Let $y = f(x)$ and let us consider restricting $h$ such that $\|Df(x+h)-Df(x)\|<(1/2)\|Df(x)\|$. We have that 
+\begin{align}
+f(x+h) - f(x) & = \int_0^1 Df(x+ th) \dt h,\\
+&  = \int_0^1 \left(Df(x+h) - Df(x)\right)\dt h + Df(x)h.
+\end{align}
+
+Now, $\left\|\int_0^1 \left(Df(x+h) - Df(x)\right)\dt\right\| \leq (1/2) \|Df(x)\|$.
+
+We use the first order approximation of $f$. Since differentiability is local information, we may assume without loss in generality that $1/C \leq \|Df\| \leq C$ on $U$. Now, we have that for any $x_1, x_2 \in U$ that $f(x_2) = f(x_1) + Df(x_1) (x_2 - x_1) + \mathcal O(\|x_2 - x_1\|^2)$. Let $y_1 = f(x_1)$ and $y_2 = f(x_2)$. Then we have $y_2 = y_1 + Df(f^{-1}(y_1)) (f$
+
+At any point $y\in V$ and any direction $w$ consider the curve $\gamma(t) = y + tw \in V$. Let $f(x) = y$ and consider the direction $v$ such that $Df(x)v = w$. Let $\chi(t) = x + tv \in U$.
+
+From the differentiabilty of $f\circ \chi(t)$, we have that $f\circ \chi(t)  = y + wt + \mathcal O(t^2).$ Therefore, we get that $g(y+tw) - g(y) = g(f\circ\chi(t) + \mathcal O(t^2)) - x$.
+\end{proof}
