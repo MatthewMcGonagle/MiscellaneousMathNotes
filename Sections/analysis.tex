@@ -41,7 +41,25 @@ Then, we have that
 \begin{equation}
 \lambda_i = 1 \pm \sqrt{2}|t|.
 \end{equation}
+
+For $\lambda_1 = 1-\sqrt{2}|t|,$ we see that the choices of normalized eigenvector are
+\begin{equation}
+v = \frac{\pm 1}{\sqrt{t^2 + (t+\sqrt{2}|t|)^2}}\begin{pmatrix} -t \\ t+\sqrt{2}|t|  \end{pmatrix}.
+\end{equation}
+
+So then we have the one sided limit
+\begin{equation}\label{analysis:eq_8}
+\lim\limits_{t\to 0+} v = \frac{\pm 1}{\sqrt{1+(1+\sqrt{2})^2}}\begin{pmatrix}-1 \\ 1 + \sqrt{2} \end{pmatrix},
+\end{equation}
+and the other one sided limit is
+\begin{equation}\label{analysis:eq_9}
+\lim\limits_{t\to 0-} v = \frac{\mp 1}{\sqrt{1+(1-\sqrt{2})^2}}\begin{pmatrix}-1 \\ 1 - \sqrt{2} \end{pmatrix}.
+\end{equation}
+
+We see that there is no choice of $\pm 1$ in equation \eqref{analysis:eq_8} and no choice of $\pm 1$ in equation \eqref{analysis:eq_9} that will make $v$ continuous at $t=0$. Therefore any choice of normalized eigenvector must have a discontinuity at $t=0$.
 \end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The Inverse Function Theorem}
 
@@ -88,9 +106,11 @@ Now we extend the regularity.
 
 \begin{proposition}
 If $f: U \to V$ is a continuous homeomorphism, $f\in C^1(U)$, and $Df$ non-singular in $U$. Then, $f^{-1}\in C^1(V)$.
+\textcolor{red}{PROOF IS INCORRECT OR INCOMPLETE. DISREGARD PROPOSITION FOR NOW.}
 \end{proposition}
 
 \begin{proof}
+\textcolor{red}{THIS PROOF IS INCORRECT/INCOMPLETE}.
 Let $y = f(x)$ and let us consider restricting $h$ such that $\|Df(x+h)-Df(x)\|<(1/2)\|Df(x)\|$. We have that 
 \begin{align}
 f(x+h) - f(x) & = \int_0^1 Df(x+ th) \dt h,\\

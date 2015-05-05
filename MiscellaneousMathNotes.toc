@@ -3,4 +3,4 @@
 \contentsline {subsection}{\numberline {1.2}The Inverse Function Theorem}{2}
 \contentsline {section}{\numberline {2}Viscosity Solutions}{4}
 \contentsline {subsection}{\numberline {2.1}Motivation}{4}
-\contentsline {subsection}{\numberline {2.2}The ``Closures'' of the semi-jets, $\overline {J}^+u$ and $\overline {J}^-u$}{5}
+\contentsline {subsection}{\numberline {2.2}The ``Closures'' of the semi-jets, $\overline {J}^+u$ and $\overline {J}^-u$}{6}
