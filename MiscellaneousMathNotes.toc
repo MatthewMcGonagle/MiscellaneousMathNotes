@@ -1,6 +1,8 @@
 \contentsline {section}{\numberline {1}Analysis}{1}
 \contentsline {subsection}{\numberline {1.1}Regularity of Eigenvalues and Eigenvectors}{1}
-\contentsline {subsection}{\numberline {1.2}The Inverse Function Theorem}{2}
-\contentsline {section}{\numberline {2}Viscosity Solutions}{4}
-\contentsline {subsection}{\numberline {2.1}Motivation}{4}
-\contentsline {subsection}{\numberline {2.2}The ``Closures'' of the semi-jets, $\overline {J}^+u$ and $\overline {J}^-u$}{6}
+\contentsline {subsection}{\numberline {1.2}The Inverse Function Theorem}{3}
+\contentsline {section}{\numberline {2}PDE}{4}
+\contentsline {subsection}{\numberline {2.1}Estimates}{4}
+\contentsline {section}{\numberline {3}Viscosity Solutions}{5}
+\contentsline {subsection}{\numberline {3.1}Motivation}{6}
+\contentsline {subsection}{\numberline {3.2}The ``Closures'' of the semi-jets, $\overline {J}^+u$ and $\overline {J}^-u$}{7}

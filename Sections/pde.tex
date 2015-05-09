@@ -1,0 +1,48 @@
+Here we record some general notes on PDE.
+
+\subsection{Estimates}
+
+Estimates can be used for showing existence of solutions (see the use of Schauder Estimates and the Continuity Method to prove the existence of solutions to elliptic pde), and they may also be used to show control over how our solutions depend on the coefficients in our equations.
+
+\begin{example}
+Consider the boundary value problem
+\begin{equation}
+\begin{cases}
+y'' - y = f_\epsilon(x) & 0<x<1,\\
+y(0) = 0,\\
+y(1) = 0,
+\end{cases}
+\end{equation}
+where $f(x)$ is the piecewise function
+\begin{equation}
+f_\epsilon(x) = 
+\begin{cases}
+\frac{x}{\epsilon} & 0 \leq x < \epsilon,\\
+2 - \frac{x}{\epsilon} & \epsilon \leq x < 2\epsilon,\\
+0 & \text{otherwise}.
+\end{cases}
+\end{equation}
+
+Now, note that $f_\epsilon \to 0$ in a pointwise manner, but $f_\epsilon \not \to 0$ in $C^0$. So, how much convergence do we need to ensure that the solutions $y \to 0$ as $\epsilon \to 0$? Let us consider this using the Laplace transform.
+
+Now we consider finding a particular solution $y_p$, i.e. a solution to $y_p'' - y_p=0$ satisfying $y_p(0) = y_p'(0) = f_\epsilon$. Letting $Y_p(s) = \mathcal L y_p$ and $F_\epsilon(s) = \mathcal L f$, we see that $(s^2 - 1)Y_p = F_\epsilon.$ Therefore, we have that $Y_p = (s^2 - 1)^{-1} F_\epsilon$. So, we get that
+
+\begin{equation}
+y_p = \int\limits_0^x \cosh(x - \tau) f_\epsilon(\tau) \dtau.
+\end{equation}
+Therefore,
+\begin{equation}
+y = c_1 \cosh x + c_2 \sinh x + \int\limits_0^x \cosh(x-\tau)f_\epsilon(\tau) \dtau.
+\end{equation}
+
+Using the boundary conditions, we get that $c_1 = 0$ and
+\begin{equation}
+c_2 (\epsilon) = \frac{-1}{\sinh 1} \int\limits_0^1 \cosh(1-\tau)f_\epsilon(\tau)\dtau.
+\end{equation}
+
+Since $f_\epsilon \to 0$ in $L^1$, we see that the solutions $y\to 0$ in $C^0$. However,
+\begin{equation}
+y' = c_2(\epsilon)\sinh x + f_\epsilon(x) + \int\limits_0^\infty \sinh(x-\tau)f_\epsilon(\tau) \dtau.
+\end{equation}
+So, we see that $y \not \to 0$ in $C^1$ as $\epsilon \to 0$. Note that $f \not \to 0$ in $C^\alpha$ for any $0 <\alpha < 1$. Which is to be expected, because if we had convergence in a Holder space, then Schauder estimates would give us a convergence for $y$ in at least $C^{2, \alpha}$.
+\end{example}
