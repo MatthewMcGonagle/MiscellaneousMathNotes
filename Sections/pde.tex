@@ -28,21 +28,165 @@ Now, note that $f_\epsilon \to 0$ in a pointwise manner, but $f_\epsilon \not \t
 Now we consider finding a particular solution $y_p$, i.e. a solution to $y_p'' - y_p=0$ satisfying $y_p(0) = y_p'(0) = f_\epsilon$. Letting $Y_p(s) = \mathcal L y_p$ and $F_\epsilon(s) = \mathcal L f$, we see that $(s^2 - 1)Y_p = F_\epsilon.$ Therefore, we have that $Y_p = (s^2 - 1)^{-1} F_\epsilon$. So, we get that
 
 \begin{equation}
-y_p = \int\limits_0^x \cosh(x - \tau) f_\epsilon(\tau) \dtau.
+y_p = \int\limits_0^x \sinh(x - \tau) f_\epsilon(\tau) \dtau.
 \end{equation}
 Therefore,
 \begin{equation}
-y = c_1 \cosh x + c_2 \sinh x + \int\limits_0^x \cosh(x-\tau)f_\epsilon(\tau) \dtau.
+y = c_1 \cosh x + c_2 \sinh x + \int\limits_0^x \sinh(x-\tau)f_\epsilon(\tau) \dtau.
 \end{equation}
 
 Using the boundary conditions, we get that $c_1 = 0$ and
 \begin{equation}
-c_2 (\epsilon) = \frac{-1}{\sinh 1} \int\limits_0^1 \cosh(1-\tau)f_\epsilon(\tau)\dtau.
+c_2 (\epsilon) = \frac{-1}{\sinh 1} \int\limits_0^1 \sinh(1-\tau)f_\epsilon(\tau)\dtau.
 \end{equation}
 
-Since $f_\epsilon \to 0$ in $L^1$, we see that the solutions $y\to 0$ in $C^0$. However,
+Since $f_\epsilon \to 0$ in $L^1$, we see that the solutions $y\to 0$ in $C^0$. Furthermore,
 \begin{equation}
-y' = c_2(\epsilon)\sinh x + f_\epsilon(x) + \int\limits_0^\infty \sinh(x-\tau)f_\epsilon(\tau) \dtau.
+y' = c_2(\epsilon)\cosh x  + \int\limits_0^x \cosh(x-\tau)f_\epsilon(\tau) \dtau.
 \end{equation}
-So, we see that $y \not \to 0$ in $C^1$ as $\epsilon \to 0$. Note that $f \not \to 0$ in $C^\alpha$ for any $0 <\alpha < 1$. Which is to be expected, because if we had convergence in a Holder space, then Schauder estimates would give us a convergence for $y$ in at least $C^{2, \alpha}$.
+So, we see that $y \to 0$ in $C^1$ as $\epsilon \to 0$. However, note that $y \not \to 0$ in $C^2$. Note that this is to be expected from Schauder estimates since $f\not \to 0$ in $C^\alpha$ for any $0<\alpha<1$.
+
+\end{example}
+
+%%%%%%%%%%%%%%%%%
+
+\begin{example}
+Let us consider the related example of solving the boundary value problem
+
+\begin{equation}
+\begin{cases}
+y'' - y = f_\epsilon(x) & 0 < x < 1,\\
+y(0) = 0,\\
+y(1) = 0,
+\end{cases}
+\end{equation}
+where $f_\epsilon$ is the piecewise function
+\begin{equation}
+f(x) = \begin{cases}
+\frac{x}{\epsilon^2} & 0 < x < \epsilon,\\
+\frac{2}{\epsilon} - \frac{x}{\epsilon^2} & \epsilon< x< 2\epsilon,\\
+0 & \text{otherwise}.
+\end{cases}
+\end{equation}
+Note that $f \not \to 0$ in $L^1$.
+
+Let us solve this in a piecewise manner. We see that
+\begin{equation}
+y = \begin{cases}
+-\frac{x}{\epsilon^2} + c_1 \cosh x + c_2 \sinh x & 0<x<\epsilon,\\
+\frac{x}{\epsilon^2} - \frac{2}{\epsilon} + c_3 \cosh x + c_4 \sinh x & \epsilon < x < 2\epsilon,\\
+c_5 \cosh x + c_6 \sinh x & 2\epsilon < x < 1.
+\end{cases}
+\end{equation}
+
+To solve for the constants $c_i$, we impose the two boundary conditions plus the four conditions from demanding that $y\in C^1$.Let
+\begin{equation}
+M = \begin{pmatrix}
+1 & 0 & 0 & 0& 0 & 0\\
+1 & 0 & -1 & 0 & 0 & 0\\
+0 & 1 & 0 & -1 & 0 & 0\\
+0 & 0 & 1 & 0 & -1 & 0\\
+0 & 0 & 0 & 1 & 0 & -1\\
+0 & 0 & 0 & 0 & \cosh 1 & \sinh 1
+\end{pmatrix},
+\end{equation}
+and
+\begin{equation}
+N = 
+\begin{pmatrix}
+0 & 0 & 0 & 0 & 0 & 0\\
+0 & 1 & 0 & -1 & 0 & 0\\
+1 & 0 & -1 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & 0 & -1 \\
+0 & 0 & 1 & 0 & -1 & 0\\
+0 & 0 & 0 & 0 & 0 & 0
+\end{pmatrix}
+\end{equation}
+Then we have that our six conditions give that
+\begin{equation}\label{pde:eq_28}
+(M + \epsilon N + \mathcal O (\epsilon^2)) \vec c = \begin{pmatrix}
+0\\
+0\\
+2/\epsilon^2\\
+0\\
+-1/\epsilon^2\\
+0
+\end{pmatrix}.
+\end{equation}
+
+Now, note that one can solve 
+\begin{equation}
+M \vec c_0 =  \begin{pmatrix}
+0\\
+0\\
+2\\
+0\\
+-1\\
+0
+\end{pmatrix}
+\end{equation}
+rather directly (without even using row reduction) to get that
+\begin{equation}
+\vec c_0 = \begin{pmatrix}
+0\\
+1\\
+0\\
+-1\\
+0\\
+0
+\end{pmatrix}.
+\end{equation}
+
+Therefore, we have that
+\begin{equation}
+(I + M^{-1}N \epsilon + \mathcal O(\epsilon^2))\vec c = \frac{1}{\epsilon^2}\vec c_0,
+\end{equation}
+and so
+\begin{equation}
+\vec c = \frac{1}{\epsilon^2}\vec c_0 -\frac{1}{\epsilon} M^{-1}N \vec c_0 + \mathcal O(1).
+\end{equation}
+
+Now, 
+\begin{equation}
+N \vec c_0 = \begin{pmatrix}
+0\\
+2\\
+0\\
+-1\\
+0\\
+0
+\end{pmatrix}.
+\end{equation}
+
+Now we solve to get that
+\begin{equation}
+M^{-1} N \vec c_0 = 
+\begin{pmatrix}
+0\\
+\cosh 1 /\sinh 1\\
+-2\\
+\cosh 1 / \sinh 1\\
+-1 \\
+\cosh 1 / \sinh 1
+\end{pmatrix}
+\end{equation}
+So, we see that
+\begin{equation}
+y = \begin{cases}
+-\frac{x}{\epsilon^2} + \frac{1}{\epsilon^2} \sinh x +\frac{1}{\epsilon}\frac{\cosh 1}{\sinh1} \sinh x + \mathcal O(1)& 0<x<\epsilon,\\
+\frac{x}{\epsilon^2} - \frac{2}{\epsilon} - \frac{1}{\epsilon^2}\sinh x - \frac{2}{\epsilon} \cosh x +\frac{1}{\epsilon}\frac{\cosh 1}{\sinh1} \sinh x+ \mathcal O(1) & \epsilon < x < 2\epsilon,\\
+-\frac{1}{\epsilon}\cosh x + \frac{1}{\epsilon}\frac{\cosh 1}{\sinh1} \sinh x + \mathcal O(1)& 2\epsilon < x < 1.
+\end{cases}
+\end{equation}
+
+And we may simplify some of the order to get
+\begin{equation}
+y = \begin{cases}
+\mathcal O(1)& 0<x<\epsilon,\\
+- \frac{4}{\epsilon}  +\mathcal O(1) & \epsilon < x < 2\epsilon,\\
+-\frac{1}{\epsilon}+ \mathcal O(1)& 2\epsilon < x < 1.
+\end{cases}
+\end{equation}
+
+So we see that $y$ doesn't even converge to $0$ in a pointwise manner as $\epsilon \to 0$.
 \end{example}
