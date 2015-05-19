@@ -1,5 +1,75 @@
 Here we record some general notes on PDE.
 
+\subsection{Weak Solutions}
+
+Let us motivate the use of weak solutions. Let $D = \{\|x\| = 1\|\subset \mathbb R^2$ be the unit disk in $\mathbb R^2$. Let us consider the case of harmonic functions solving the dirichlet problem on the unit disk $D\subset\mathbb R^2$, 
+\begin{equation}
+\begin{cases}
+\laplace u = 0 & x\in D, \\
+u = \phi & x\in \partial D.
+\end{cases}
+\end{equation}
+
+Let us define the energy of $u$ by
+\begin{equation}
+E(u) = \int_D |\grad u|^2 \dA.
+\end{equation}
+Now, for $u \in C^2(D)\cap C(\bar D)$ and for $\phi\in C^2(D)\cap C(\bar D)$ with $\phi = 0$ on $\partial D$ one can show that $E(u+\phi) \geq E(u)$, with equality only if $\phi = 0.$ That is, $u$ must be a strict minimizer of $E(u)$ for functions $\{ w \in C^2(D) \cap C(\bar D) | w = \phi \text{ on } \partial D\}$.
+
+However, now note that the energy $E(u)$ is still well-defined for $V = \{u\in C^2(D\setminus\{0\})\cap C(\bar D \setminus \{0\}) : E(u) < \infty\}.$ So, we may ask ouselves to search for minimizers in the space of functions $V$. After all, why should nature be restricted to continuous functions?
+
+For example, the potential function $u(x,y) = \log r$ is harmonic on $D\setminus\{0\}$ and continuous up to the boundary of the disk. Although $E(u) = \infty$ and $u\not\in V$, it does add to the motivation to consider the possibility of harmonic functions with singularities. The function $u$ has a singularity at $(x,y) = 0$. We in fact have that $\laplace u = C \delta(x,y)$ as distributions, and so in some sense it is not true that $u = \log r$ is harmonic on $D\setminus \{0\}$. However, for now, let us just consider solutions in the classical sense of derivatives.
+
+Let us first consider the standard example of $u$ bounded and harmonic on $D\setminus\{0\}$.
+
+\begin{proposition}
+Let $u \in C^2(D\setminus\{0\})\cap C(\bar D\setminus \{0\})$ be bounded and harmonic in $D\setminus\{0\}$. Then, $u$ is harmonic in $D$, and so $u\in C^\infty(D)$.
+\end{proposition}
+
+\begin{proof}
+Consider the function $v$ solving the dirichlet problem
+\begin{equation}
+\begin{cases}
+\laplace v = 0 & x \in D,\\
+v = u & x\in \partial D.
+\end{cases}
+\end{equation}
+By considering $u - v$, without loss in generality, we may suppose $u = 0$ on $\partial D$.
+
+Let $|u|\leq M$ on $D\setminus\{0\}$. Let $w_\delta^+$ be the solution to the Dirichlet problem
+\begin{equation}
+\begin{cases}
+\laplace w_\delta^+ = 0 & x \in D\setminus D_\delta(0),\\
+w_\delta^+ = 0 & x\in \partial D,\\
+w_\delta^+ = M & x\in \partial D_\delta(0).
+\end{cases}
+\end{equation}
+A computation gives
+\begin{equation}
+w_\delta^+ = M\frac{\log r}{\log\delta}.
+\end{equation}
+
+Similary, for the boundary condition $w_\delta^- = -M$ on $\partial D_\delta(0)$, consider the function
+\begin{equation}
+w_\delta^- = -M\frac{\log r}{\log\delta}.
+\end{equation}
+
+By the maximum principle for harmonic functions, we have that $w_\delta^- \leq u \leq w_\delta^+$ on $D \setminus D_\delta(0)$. So, for some fixed $0<\delta_0<1$, we get that $|u| \leq M \log\delta_0 / -\log\delta$ on $D\setminus D_\delta(0)$. This is true as $\delta\to 0$, and so we get that $u=0$ on $D\setminus 0$. Therefore, $u$ is trivially harmonic on $D$.
+\end{proof}
+
+\begin{proposition}
+Let $u \in C^2(D\setminus\{0\})\cap C(\bar D\setminus \{0\})$ be $\mathcal O (|\log r|^\alpha)$ for $0<\alpha<1$ and harmonic in $D\setminus\{0\}$. Then, $u$ is harmonic in $D$, and so $u\in C^\infty(D)$.
+\end{proposition}
+
+\begin{proof}
+The proof is similar except we now use
+\begin{equation}
+w_\delta^\pm = \pm K(-\log\delta)^\alpha \frac{\log r}{\log \delta}.
+\end{equation}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Estimates}
 
 Estimates can be used for showing existence of solutions (see the use of Schauder Estimates and the Continuity Method to prove the existence of solutions to elliptic pde), and they may also be used to show control over how our solutions depend on the coefficients in our equations.
