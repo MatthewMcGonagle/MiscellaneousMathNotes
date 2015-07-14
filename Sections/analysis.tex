@@ -59,6 +59,24 @@ and the other one sided limit is
 We see that there is no choice of $\pm 1$ in equation \eqref{analysis:eq_8} and no choice of $\pm 1$ in equation \eqref{analysis:eq_9} that will make $v$ continuous at $t=0$. Therefore any choice of normalized eigenvector must have a discontinuity at $t=0$.
 \end{example}
 
+The only regularity of the eigenvalues $\lambda_i$ that we are guaranteed is Lipschitz; however, symmetric functions $f$ of the eigenvalues have the same regularity as $f$ and the matrix $M(t)$.
+
+ \begin{proposition}
+ 
+Let $M(t) \in C^\infty$ be a $n\times n$ symmetric matrix function, and let $f: \mathbb R^n \to \mathbb R$ be a symmetric and smooth function. Then $g(t) = f(\lambda_1(t),..., \lambda_n(t))$ is smooth.
+
+\end{proposition}
+
+\begin{proof}
+
+Consider any fixed time $t_0$. Let $x_0 = (\lambda_1(t_0), ..., \lambda_n(t_0)).$ Since $f$ is a symmetric function, we have that the Nth Taylor Expansion of $f$ around $x_0$ is of the form:
+\begin{equation}
+f(x_0 + h) = \sum\limits_{i=0}^N + \mathcal O( |h|^{N+1}),
+\end{equation}
+where $p_i(x)$ is a symmetric homogeneous polynomial of degree $i$. 
+
+\end{proof}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The Inverse Function Theorem}
