@@ -6,4 +6,9 @@ M.~G. {Crandall}, H.~{Ishii}, and P.-L. {Lions}.
   differential equations}.
 \newblock {\em ArXiv Mathematics e-prints}, June 1992.
 
+\bibitem{krylov}
+N.~V. Krylov.
+\newblock Boundedly inhomogeneous elliptic and parabolic equations in a domain.
+\newblock {\em Izv. Akad. Nauk SSSR Ser. Mat.}, 47(1):75--108, 1983.
+
 \end{thebibliography}

@@ -270,3 +270,65 @@ y = \begin{cases}
 
 So we see that $y$ doesn't even converge to $0$ in a pointwise manner as $\epsilon \to 0$.
 \end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Holder Spaces for Estimates}
+
+For different types of PDE's, one obtains estimates in different types of Holder Spaces. For example, the natural Holder spaces are different for Laplace's operator, the heat operator, and parabolic equations with specific degeneracies such as those considered in Krylov\cite{krylov}.
+
+For Poisson's equation $\laplace u = f$, the natural Holder spaces are the standard holder spaces given by the semi-norms
+\begin{equation}
+\|u\|_\alpha = \frac{|u(x) - u(y)|}{\|x - y\|^\alpha}.
+\end{equation}
+
+For the heat equation $u_t - \laplace u = f$, the natural Holder spaces are the parabolic holder spaces given by the semi-norms
+\begin{equation}
+\|u\|_\alpha = \frac{|u(x,t) - u(y,s)| }{\|x-y\|^{2\alpha} + |t-s|^\alpha}.
+\end{equation}
+Here, we see that the regularity in the spatial $x$-direction is twice as good as the regularity in the time direction.
+
+Consider the parabolic equation $x^2 u_t = u_{xx} + x^2 u_{yy} + f$, which is of the form considered by Krylov\cite{krylov}. For this equation the natural Holder spaces are given by the semi-norms
+\begin{equation}
+\|u\|_\alpha = \frac{|u(x,y,t) - u(z,w,s)|}{|x-z|^{4\alpha}+|y-w|^{2\alpha}+|t-s|^\alpha}.
+\end{equation}
+Here, we see that the regularity in the spatial $x$-direction is twice as good as the regularity in the spatial $y$-direction, and the regularity in the $x$-direction is four times as good as the time direction. Note that the $x$-direction is the ``uniformly elliptic direction'' and the $y$-direction is the ``elliptic degeneracy direction.''
+
+Now, we discuss some heuristic reasons for why these are the appropriate Holder Spaces. Let us consider the equation
+\begin{equation}\label{eq:pde_51}
+x^2 u_t = u_{xx} + x^2 u_{yy} + f,
+\end{equation}
+as seen in Krylov\cite{krylov}. Also, consider the case that we have constructed some type of Holder estimate on $B_1(0)$,
+\begin{equation}\label{eq:pde_52}
+\|u\|_\alpha \leq C (\|f\|_C+\|u\|_C).
+\end{equation}
+Note that the choice of semi-norm on $(x,y,t)$ is not important as all semi-norms are comparable on a fixed scale (maybe after changing $\alpha$ for a particular choice in semi-norm). For example,
+\begin{equation}
+\frac{|x|^\alpha + |y|^\alpha}{|x|^{\alpha} + |y|^{\alpha/2}},
+\end{equation}
+and
+\begin{equation}
+\frac{|x|^{2\alpha} + |y|^\alpha}{|x|^\alpha + |y|^\alpha},
+\end{equation}
+are both bounded on $B_1(0)$.
+
+We wish to find a choice in semi-norm on $(x,y,t)$ such that we can use estimates \eqref{eq:pde_52} on $B_1(0)$ to create estimates for functions $u$ satisfying \eqref{eq:pde_51} on $B_R(0)$. So therefore, let $u(x,y,t)$ satisfy equation \eqref{eq:pde_51} on $B_R(0)$. We use a scaling $x = R^a x'$, $y = R^by'$, and $t = R^c t'$ to get that $u'(x',y',t') =  u(R^a x', R^b y', R^c t')$ satisfies
+\begin{equation}
+R^{2a-c}(x')^2 u'_{t'} = R^{-2a}u'_{x'x'} + R^{2a-2b}(x')^2 u'_{y'y'} + f',
+\end{equation}
+where we want all of the powers of $R$ to be the same, and $f'(x',y't') = f(x,y,t)$. We get that $2a-c = -2a = 2a-2b$. So, we get that $c = 4a$ and $b = 2a$. So on $B_1(0)$, we have
+\begin{equation}
+(x')^2 u'_{t'} = u'_{x'x'} + (x')^2 u'_{y'y'} + R^{2a} f'.
+\end{equation}
+So from our estimates on $B_1(0)$, we have that $\|u'\|_{C^\alpha(B_1)} \leq C (R^{2a}\|f\|_{C^0}+\|u\|_{C^0})$. For the appropriate choice of semi-norm on $(x',y',t)$, the Holder norm on $u'$ gives a Holder norm on $u$:
+\begin{equation}
+\frac{1}{R^{-4a\alpha}}\frac{|u(x,y,t) - u( z,w,s)|}{|x-z|^{4\alpha} + |y-w|^{2\alpha}+|t-s|^\alpha} \leq C(R^{2a}\|f\|_{C^0}+\|u\|_{C^0}).
+\end{equation}
+So we get that for the appropriate choice of semi-norm on $(x,y,t)$ that
+\begin{equation}
+\|u\|_{C^\alpha(W_R)} \leq C R^{-4a\alpha} (R^{2a}\|f\|_{C^0}+\|u\|_{C^0}).
+\end{equation}
+Taking $a=1$, we get on $W_R = \{x^4 + y^2 + |t| \leq R \}$ that
+\begin{equation}
+\|u\|_{C^\alpha(W_R)} \leq C R^{-4\alpha} (R^2\|f\|_{C^0}+\|u\|_{C^0}).
+\end{equation}
