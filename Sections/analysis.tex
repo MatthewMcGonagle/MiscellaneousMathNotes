@@ -1,6 +1,6 @@
 Here we record some general notes on analysis.
 
-\subsection{Regularity of Eigenvalues and Eigenvectors}
+\subsection{Regularity of Eigenvalues and Eigenvectors}\label{sub:eigen}
 
 Consider a symmetric matrix function $M(x): \mathbb R^m \to \mathbb R^n\times \mathbb R^n$. At each point $x\in \mathbb R^m$, we have that the eigenvalues $\lambda_i$ of $M(x)$ are real valued. Therefore, we may uniquely indentify them using an ordering $\lambda_1 \leq ... \leq \lambda_m$. In general, if $M$ is smooth (or even analytic) each $\lambda_i$ may be only Lipschitz.
 
@@ -79,6 +79,33 @@ where $p_i(x)$ is a symmetric homogeneous polynomial of degree $i$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsection{Regularity of Systems of ODE}
+ 
+ Here we consider how the regularity results for systems of ODE are somewhat surprising. As we discussed in subsection \ref{sub::eigen}, smooth (and even analytic) matrix functions \(M(t)\) have in general at most Lipschitz regularity in their eigenvalues, and their normalized eigenvectors don't need to be continuous.
+ 
+ Now, for a linear system of ODE's such as 
+ \begin{equation}
+ \vec x' = M(t) \vec x,
+ \end{equation}
+ the solutions are given by \(\vec x(t) = \exp\left( \int_0^t M(s) \ds \right) \vec x_0\). From this expression, the regularity of the solutions is immediately clear from the analycity of \(\exp\). However, for the moment forget this fact. Without the use of the \(\exp\) function, we may be inclined to solve this system by diagonalizing \(M(t)\) for each \(t\), and then attempt to derive equations for the coordinates in this time dependent eigenbasis.
+
+Let us consider the case where the normalized eigenvectors are constant on \(\{t>0\}\), constant on \(\{t<0\}\), and have a discontinuity at \(t=0\). For example, we could consider
+ \begin{equation}
+ M(t) = \begin{pmatrix}1 & 0\\0 & 1 \end{pmatrix} + \phi(t) \begin{pmatrix}1 & 2 \\ 2 & 1 \end{pmatrix} + \psi(t) \begin{pmatrix} 0 & 1\\ 1 & 0 \end{pmatrix},
+ \end{equation}
+where \( \suppt \phi \subset [0,1]\) and \(\suppt \psi \subset [-1,0]\). For such a situation we get unlinked ODE for the eigen coordinates of \(\vec x\), and furthermore these are regular on \(\mathbb R\) (the equations for the coefficients extends smoothly across \(t=0\)). However, the discontinuity of the normalized eigenvectors should give us pause as to whether these solutions combined to give a regular \(\vec x(t)\) at \(t=0\).
+
+From this analysis, the regularity isn't particular clear. Luckily, the closed form solution \(u(t) =  \exp\left( \int_0^t M(s) \ds \right) \vec x_0\) proves the regularity to us very readily. Compare this to the situation of linear elliptic equations with non-constant coefficients, e.g.
+\begin{equation}
+\begin{cases}
+a_{ij}(x)  \partial^2_{ij}u = 0 & x \in\Omega\\
+u (x) = \phi(x) & x \in\partial \Omega.
+\end{cases}
+\end{equation}
+Here a closed form solution isn't readily available to give us regularity. That must be done using more advanced methods.
+Until the regularity is proven, it isn't clear that it should even be the case.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{The Inverse Function Theorem}
 
 We will prove a weaker version of the inverse function theorem using differential equations. Consider $f: U \to V$. Let us consider the construction of the inverse of $f$ along a curve $\gamma(t) \in V$ with $\gamma(0) = 0$. We wish to construct a curve $\chi(t)$ with $\chi(0) = 0$ and $f\circ \chi (t) = \gamma(t)$. Differentiating, we see that $\chi(t)$ must necessarily satisfy $Df(\chi(t))\chi'(t) = \gamma'(t)$. Therefore, 
@@ -143,3 +170,13 @@ At any point $y\in V$ and any direction $w$ consider the curve $\gamma(t) = y + 
 
 From the differentiabilty of $f\circ \chi(t)$, we have that $f\circ \chi(t)  = y + wt + \mathcal O(t^2).$ Therefore, we get that $g(y+tw) - g(y) = g(f\circ\chi(t) + \mathcal O(t^2)) - x$.
 \end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Weak Derivatives}
+
+Let us motivate the Sobolev notion of weak derivative. For weak derivatives in the Sobolev sense, the weak derivative captures how the function changes in the average. Let us first examine the integration by parts formula for weak derivatives:
+
+\begin{equation}
+a
+\end{equation}
