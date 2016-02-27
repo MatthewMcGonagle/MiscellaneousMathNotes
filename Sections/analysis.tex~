@@ -12,7 +12,7 @@ So,
 \[
 	f(x,y) = \frac{x^2 y}{x^4 + y^2}.
 \]
-We see that \(f(x,y)\) has the desired properties. In particular, along any line through the origin, the function approaches \(0\). However, along the parabola \(y = mx^2\), we have that \(f(x,y) = m/(1+m^2),\) which is non-constant in \(m\).
+We see that \(f(x,y)\) has the desired properties.
 
 \subsection{Regularity of Eigenvalues and Eigenvectors}\label{sub:eigen}
 
