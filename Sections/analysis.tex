@@ -14,6 +14,28 @@ So,
 \]
 We see that \(f(x,y)\) has the desired properties. In particular, along any line through the origin, the function approaches \(0\). However, along the parabola \(y = mx^2\), we have that \(f(x,y) = m/(1+m^2),\) which is non-constant in \(m\).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Compact Operators}
+
+Consider the Fredholm Alternative (for reference consult Gilbarg-Trudinger).
+
+\begin{theorem}
+	Let \(T: V \to V\) be a compact operator and let \(S = I - T\). Then either
+	\begin{itemize}
+		\item The kernel of \(S\) is trivial and \(S\) is also onto. Furthermore, the inverse \(S^{-1}\) is continuous.
+		\item The kernel of \(S\) is non-trivial.
+	\end{itemize}
+
+\end{theorem}
+
+Note that the Fredholm Alternative tells us that operators \(S\) that differ from the identity \(I\) by a compact operator \(T\) act like linear transformations on finite dimensional vector spaces. Furthermore, the use of the identity \(I\) here is important, as can be seen in the following example.
+
+\begin{example}
+	Consider the Banach space \(V = l^p\) given by the space of sequences with finite norm \(\|a_n\| = \left(\sum_n |a_n|^p\right)^{1/p}\). We have that the operator \(T: V \to V\) given by \(T(a_n)_m = 2^{-m} a_m\) is a compact operator. Furthermore, the kernel of \(T\) is trivial. However, \(T\) is not onto. The sequence \(y_n = 2^{-n}\) is not in the image of \(V\), e.g. \(x_n = 1\) is not a sequence in \(l^p\).
+
+	However, note that the operator \(S = I - T\) is onto. For any sequence \(y_n \in l^p\), the sequence \(x_n = \left(1 - 2^{-n}\right)^{-1} y_n\) is also in \(l^p\). Furthermore, we get that the inverse of \(S\) is continuous.
+\end{example}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Regularity of Eigenvalues and Eigenvectors}\label{sub:eigen}
 
 Consider a symmetric matrix function $M(x): \mathbb R^m \to \mathbb R^n\times \mathbb R^n$. At each point $x\in \mathbb R^m$, we have that the eigenvalues $\lambda_i$ of $M(x)$ are real valued. Therefore, we may uniquely indentify them using an ordering $\lambda_1 \leq ... \leq \lambda_m$. In general, if $M$ is smooth (or even analytic) each $\lambda_i$ may be only Lipschitz.
